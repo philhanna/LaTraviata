@@ -33,18 +33,27 @@ globals = {
 
 cueVoiceUpper = \relative c'' {
   \globals
+  R1*29					| %1-29
 }
 
 cueVoiceLower = \relative c' {
   \globals
+  \clef bass
+  R1*29					| %1-29
 }
 
 cueStaff = {
-  \new PianoStaff <<
-    \new Staff {
+  \new PianoStaff \with {
+  }
+  <<
+    \new Staff \with {
+      \magnifyStaff #2/3
+    }{
       \cueVoiceUpper
     }
-    \new Staff {
+    \new Staff \with {
+      \magnifyStaff #2/3
+    }{
       \cueVoiceLower
     }
   >>
@@ -69,16 +78,24 @@ bassVoice = \relative c' {
   dis8 r cis8. cis16 b8 r a8. a16	| %36
   gis4 r4 r2 				| %37
   R1 * 12				| %38-49
-  \new CueVoice \relative c' {
-    \cueClef "treble"
-    e2. \trill ( cis'8-. ) b-.
-    a8-. r cis-. fis-. e-. r <a, a'>4->
-    \slurDown
-    gis'8-. e-. \acciaccatura { gis8 } fis4->
-    e8 cis \acciaccatura { e8 } d8-. b-. |
-    \cueClefUnset
-  }
-  r2 gis4-> r8. gis16
+  <<
+    \new CueVoice \relative c' {
+      \cueClef "treble"
+      e2. \trill ( cis'8-. ) b-.		| %50
+      a8-. r cis-. fis-. e-. r <a, a'>4->| %51
+      gis'8-. e-.
+      \acciaccatura { gis8 } fis4->
+      e8 cis
+      \acciaccatura { e8 } d8-. b-.	| %52
+      \cueClefUnset
+    }
+    \context Voice \relative c' {
+      s1*3				| %50-52
+      \clef bass
+    }
+  >>
+  r2 gis4-> r8. gis16			| %53
+
 }
 
 bassLyrics = \lyricmode {
@@ -92,9 +109,8 @@ bassLyrics = \lyricmode {
 % Printed score
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \score {
-  \new GrandStaff <<
-    \cueStaff
-    \new Staff {
+  <<
+    \new Staff = "main" {
       \new Voice = "bassVoice" {
         \bassVoice
       }
@@ -105,9 +121,9 @@ bassLyrics = \lyricmode {
         \bassLyrics
       }
     }
-
   >>
   \layout {
+    indent = 0
     \context {
       \Staff
       \RemoveAllEmptyStaves
