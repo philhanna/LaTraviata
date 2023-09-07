@@ -18,8 +18,8 @@
   top-margin = 1\cm
   left-margin = 2\cm
   right-margin = 1\cm
-  ragged-bottom = ##t
-  ragged-last-bottom = ##t
+  ragged-bottom = ##f
+  ragged-last-bottom = ##f
   system-system-spacing.basic-distance = #10
   score-system-spacing =
   #'((basic-distance . 10)
@@ -32,6 +32,7 @@
 globals = {
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #2
+  \override Score.MetronomeMark.padding = #3
 }
 
 morebars = {
@@ -41,14 +42,16 @@ morebars = {
 
 }
 
+\include "prelude.lyi"
+
 \markup {
   \fill-line {
     \center-column {
-      \line { \large \bold "Act I" }
+      \line { \fontsize #4 \bold "Act I" }
       \vspace #1
       \line { }
     }
   }
 }
 
-\include "prelude.lyi"
+\include "introduzione.lyi"

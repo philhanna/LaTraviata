@@ -19,6 +19,7 @@
       <<
         \new Voice \relative c''' {
           \voiceOne
+          \tempo Agagio 4=66
           b2 ( ais4 b
           \oneVoice
           cis2 d2
