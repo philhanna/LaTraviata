@@ -1,0 +1,66 @@
+\markup {
+  \fill-line {
+    \center-column {
+      \line {\large \bold  {Preludio}}
+      \vspace #1
+      \line { }
+    }
+  }
+}
+
+\score {  
+  \new PianoStaff \with { instrumentName = "Strings" }
+  <<
+    \new Staff {
+      \globals
+      \key e \major
+      \time 4/4
+      \clef treble
+      <<
+        \new Voice \relative c''' {
+          \voiceOne
+          b2 ( ais4 b
+          \oneVoice
+          cis2 d2
+          cis2 e4 d4
+          cis2 ) 
+          r2
+          \morebars
+          \repeat unfold 8 {
+            <e, e'>16-. <dis dis'>-.
+          } 
+          <e e'>2 r2 \fermata
+          \bar "|."
+        }
+        \new Voice \relative c'' {
+          \voiceTwo
+          fis1
+          ais2 b2
+          ais2 cis4 b->
+          ais2 s2
+          s1         
+        }
+      >>
+    }
+    \new Staff {
+      \globals
+      \key e \major
+      \time 4/4
+      \clef bass
+      \new Voice \relative c'' {
+        \clef treble
+        <b d>2 ( <cis e>4 d
+        <fis, fis'>1 ~
+        q2. <eis eis'>4->
+        <fis fis'>2 ) r2
+        \morebars
+        <cis' e gis>8-. r r4 q8-. r r4
+        q2 r2 \fermata
+      }
+    }
+  >>
+  \layout {
+    %indent = 0
+    #(layout-set-staff-size 12)
+  }
+}

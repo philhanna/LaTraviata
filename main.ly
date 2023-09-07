@@ -33,3 +33,22 @@ globals = {
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #2
 }
+
+morebars = {
+  s1 ^\markup {
+    \fontsize #3 \bold {...}
+  }
+
+}
+
+\markup {
+  \fill-line {
+    \center-column {
+      \line { \large \bold "Act I" }
+      \vspace #1
+      \line { }
+    }
+  }
+}
+
+\include "prelude.lyi"
