@@ -13,7 +13,7 @@
   #(set-paper-size "letter")
   top-margin = 1\cm
   left-margin = 2\cm
-  right-margin = 2\cm
+  right-margin = 1\cm
   ragged-bottom = ##t
   ragged-last-bottom = ##t
   system-system-spacing.basic-distance = #10
@@ -31,35 +31,6 @@ globals = {
   \override MultiMeasureRest.expand-limit = #2
 }
 
-cueVoiceUpper = \relative c'' {
-  \globals
-  R1*29					| %1-29
-}
-
-cueVoiceLower = \relative c' {
-  \globals
-  \clef bass
-  R1*29					| %1-29
-}
-
-cueStaff = {
-  \new PianoStaff \with {
-  }
-  <<
-    \new Staff \with {
-      \magnifyStaff #2/3
-    }{
-      \cueVoiceUpper
-    }
-    \new Staff \with {
-      \magnifyStaff #2/3
-    }{
-      \cueVoiceLower
-    }
-  >>
-
-}
-
 bassVoice = \relative c' {
   \globals
   \clef bass
@@ -67,17 +38,30 @@ bassVoice = \relative c' {
   \time 4/4
   \tempo "Allegro brilliantissimo e molto vivace" 4=132
 
-  R1*3					| %1-3
-  R1 \fermata				| %4
-  R1*24					| %5-28
-  R1 \fermata				| %29
+  R1*29					| %1-29
   \break
-  R1*4					| %30-33
+  
+  <<
+    \new CueVoice \relative c'' {
+      \cueClef "treble"
+      b2. \trill ( gis'8-. ) fis-.	| %30
+      e8-. r gis-. cis-. b8-. r <e, e'>4->	| %31
+      dis'8-. b-. \acciaccatura { dis8 } cis4->
+      b8-. d-. \acciaccatura { b8 } a4->	| %32
+      gis8-. e-. fis-. b,-. e8-. r r4	| %33
+      \cueClefUnset
+    }
+    \context Voice {
+      s1*4				| %30-33
+    }
+  >>
+  \break
   r4 r8 b b4 b8 b			| %34
   cis8 b r4 b8 r e r			| %35
   dis8 r cis8. cis16 b8 r a8. a16	| %36
   gis4 r4 r2 				| %37
   R1 * 12				| %38-49
+  \break
   <<
     \new CueVoice \relative c' {
       \cueClef "treble"
@@ -94,16 +78,37 @@ bassVoice = \relative c' {
       \clef bass
     }
   >>
+  \break
   r2 gis4-> r8. gis16			| %53
+  fis4 d8. d16 b4 e8-. e-.		| %54
+  a,4 r gis' r8. gis16			| %55
+  \break fis4 d8. d16 b4 e8-. e-.		| %56
+  a,4 r r2				| %57
+  
+  R1*20					| %58-77
+  
+  <<
+    \new CueVoice = "pronto" \relative c'' {
+      \cueClef "treble"
+      r2 a4. ^\markup \small \italic "Pronto e il tutto?" a8
+      a4 d,4 r \fermata r8. d'16
+      \cueClefUnset
+    }
+    \context Voice \relative c' {
+    }
+  >>
 
 }
 
 bassLyrics = \lyricmode {
+  \override LyricText.font-size = #-1
   Gio cam -- mo da Flo -- ra,
   e gio -- can -- do quel -- l'o -- re vo -- lar.
 
-  Sì, la vi -- ta s'ad -- dop -- pia al gio -- ir.
+  Sì, la vi -- ta s'ad -- dop -- pia__al gio -- ir.
+  Sì, la vi -- ta s'ad -- dop -- pia__al gio -- ir.
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Printed score
@@ -126,20 +131,7 @@ bassLyrics = \lyricmode {
     indent = 0
     \context {
       \Staff
-      \RemoveAllEmptyStaves
+      %\RemoveAllEmptyStaves
     }
-  }
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Midi score
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\score {
-  \new Staff \with {
-    instrumentName = "Bass"
-  } {
-    \bassVoice
-  }
-  \midi {
   }
 }
