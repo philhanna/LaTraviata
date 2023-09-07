@@ -26,35 +26,49 @@
   print-page-number = ##f
 }
 
-options = {
+globals = {
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #2
 }
 
+cueVoiceUpper = \relative c'' {
+  \globals
+}
+
+cueVoiceLower = \relative c' {
+  \globals
+}
+
+cueStaff = {
+  \new PianoStaff <<
+    \new Staff {
+      \cueVoiceUpper
+    }
+    \new Staff {
+      \cueVoiceLower
+    }
+  >>
+
+}
+
 bassVoice = \relative c' {
-  \options
+  \globals
   \clef bass
-  \dynamicUp
   \key a \major
   \time 4/4
   \tempo "Allegro brilliantissimo e molto vivace" 4=132
-  
-  R1*3			| %1-3
-  R1 \fermata		| %4
-  R1*24			| %5-28
-  R1 \fermata		| %29
+
+  R1*3					| %1-3
+  R1 \fermata				| %4
+  R1*24					| %5-28
+  R1 \fermata				| %29
   \break
-  R1*4 ^\markup
-  \small \italic
-  \column {
-    "Dell'invto trascorsa è già l'ora."
-    "Voi tardaste."
-  } | %30-33
-  r4 r8 b b4 b8 b	| %34
-  cis8 b r4 b8 r e r	| %35
-  dis8 r cis8. cis16 b8 r a8. a16 | %36
-  gis4 r4 r2 | %37
-  R1 * 12	| %38-49
+  R1*4					| %30-33
+  r4 r8 b b4 b8 b			| %34
+  cis8 b r4 b8 r e r			| %35
+  dis8 r cis8. cis16 b8 r a8. a16	| %36
+  gis4 r4 r2 				| %37
+  R1 * 12				| %38-49
   \new CueVoice \relative c' {
     \cueClef "treble"
     e2. \trill ( cis'8-. ) b-.
@@ -67,10 +81,10 @@ bassVoice = \relative c' {
   r2 gis4-> r8. gis16
 }
 
-verse = \lyricmode {
+bassLyrics = \lyricmode {
   Gio cam -- mo da Flo -- ra,
   e gio -- can -- do quel -- l'o -- re vo -- lar.
-  
+
   Sì, la vi -- ta s'ad -- dop -- pia al gio -- ir.
 }
 
@@ -78,13 +92,26 @@ verse = \lyricmode {
 % Printed score
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \score {
-  \new Staff \with {
-    instrumentName = "Bass"
-  } {
-    \bassVoice
-  }
-  \addlyrics { \verse }
+  \new GrandStaff <<
+    \cueStaff
+    \new Staff {
+      \new Voice = "bassVoice" {
+        \bassVoice
+      }
+    }
+    \new Lyrics = "bassVoice"
+    \context Lyrics = "bassVoice" {
+      \lyricsto "bassVoice" {
+        \bassLyrics
+      }
+    }
+
+  >>
   \layout {
+    \context {
+      \Staff
+      \RemoveAllEmptyStaves
+    }
   }
 }
 
