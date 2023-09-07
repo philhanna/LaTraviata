@@ -18,14 +18,15 @@
   top-margin = 1\cm
   left-margin = 2\cm
   right-margin = 1\cm
-  ragged-bottom = ##f
-  ragged-last-bottom = ##f
-  system-system-spacing.basic-distance = #10
+  ragged-bottom = ##t
+  ragged-last-bottom = ##t
+  system-system-spacing.basic-distance = #17
   score-system-spacing =
   #'((basic-distance . 10)
      (minimum-distance . 10)
      (padding . 1)
      (stretchability . 10))
+  system-separator-markup = \slashSeparator
   print-page-number = ##f
 }
 
