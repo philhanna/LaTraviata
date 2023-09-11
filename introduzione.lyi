@@ -11,150 +11,47 @@
 }
 
 \score {
-  <<
-    \new PianoStaff <<
-      
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      % Cue staff
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      
-      \new Staff = "cueStaff" \with {
-        instrumentName = "Cue voice"
-        \magnifyStaff #5/7
-      } {
-        <<
-          \new Voice = "cueVoice" \relative c' {
-            \globals
-            \key a \major
-            \time 4/4
-            s1*4
-            s1*24
-            \break
-            \clef "treble_8"
-            r2 ^\markup "Tenors" b8 r e r	|
-            dis8 r cis8. cis16 b8 r a8. a16	|
-            gis8 e r4 r4 gis8 a8			|
-            b8 gis8 r4 r2			|
-            R1*10
-            r2 r4 ^\markup "Violetta" e'4 \bar "||"
-            cis4 a r2
-            R1*3
-          }
-          \new Lyrics \lyricsto "cueVoice" {
-            \lyricmode {
-              \set fontSize = #-3.2
-              Dell' in -- vi -- to tra -- scor -- sa è-già l'o -- ra.
-              Voi tar -- das -- te.
-              Lo vo -- glio;
-            }
-          }
-        >>
-      }
-    
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      % Bass voice
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      
-      \new Staff = "bassStaff" \with {
-        instrumentName = "Bass"
-      } {
-        <<
-          \new Voice = "bassVoice" \relative c' {
-            \globals
-            \key a \major
-            \time 4/4
-            \clef bass
-            s1*4
-            s1*24
-            R1 * 3
-            r4 r8 b b4 b8 b
-            cis8 b r4 b8 r e r |
-            dis8 r cis8. cis16 b8 r a8. a16
-            gis4 r r2 |
-            R1*9
-            R1*3
-            r2 gis4-> r8. gis16 |
-            fis4 d8. d16 b4 e8 e |
-            a,4 r gis' r8. gis16 |
-            fis4 d8. d16 b4 e8 e |
-            a,4 r r2 |
-          }      
-          \new Lyrics \lyricsto "bassVoice" {
-            \lyricmode {
-              \set fontSize = #0
-              Gio cam -- mo da Flo -- ra,
-              e gio -- can -- do quel -- l'o -- re vo -- lar.
-              Sì, la vi -- ta s'ad -- dop -- pia__al gio -- ir.
-              Sì, la vi -- ta s'ad -- dop -- pia__al gio -- ir.
-            }
-          }
-      
-        >>
-      }
-
-    >>
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % Orchestra
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \new PianoStaff \with {
-      instrumentName = \markup {
-        \fontsize #-2
-        \center-column {
-          \line {Allegro}
-          \line {brilliantissimo}
-          \line {e molto}
-          \line {vivace}
-        }
-      }
-    }
+  \new Staff = bassStaff {
+    \clef bass
+    \key a \major
+    \time 4/4
     <<
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      % Orchestra left hand
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \new Staff \with {
-        \magnifyStaff #5/7
-      } {
-        \globals
-        \key a \major
-        \time 4/4
-        \tempo 4=120
-        \clef treble
-        \relative c' {
-          r8 \f dis16 ( e ) fis8-. g-. gis-. a-. ais-. b-.
-          cis4-. r r2
-          r8 fis,16 ( gis ) a8-. b-. cis-. d-. e-. eis-.
-          fis4-. r <gis b e gis> \arpeggio r4 \fermata
-          R1*24
+      \new Voice = "bassVoice" {
+        <<
+          \relative c' {
+            s1*4/4 * 3			|
+            s4 r8 b b4 b8 b8		|
+            cis8 b r4 b8 r e r		|
+            dis8 r cis8. cis16 b8 r a8. a16 |
+            gis4 r r2			|
+          }
+          \new CueVoice = "cueVoice" \relative c' {
+            \cueClef "treble_8"
+            r2 b8 ^\markup \italic \large "tenors" r e r			|
+            dis8 r cis8. cis16 b8 r a8. a16	|
+            gis8 e r4 r gis8 a		|
+            \break
+            b8 gis \cueClefUnset s4 s2	|
+          }
+        >>
+      }
+      \new Lyrics \lyricsto "bassVoice" {
+        \lyricmode {
+          Gio cam -- mo da Flo -- ra,
+          e gio -- can -- do quel -- l'o -- re vo -- lar.
         }
       }
-      
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      % Orchestra right hand
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \new Staff \with {
-        \magnifyStaff #5/7
-      } {
-        \globals
-        \key a \major
-        \time 4/4
-        \clef bass
-        \relative c {
-          r8 \f dis16 ( e ) fis8-. g-. gis-. a-. ais-. b-.
-          cis4-. r r2
-          r8 fis,16 ( gis ) a8-. b-. cis-. d-. e-. eis-.
-          fis4-. r <e,, gis b e> \arpeggio r4 \fermata
-          R1*24
+      \new Lyrics \lyricsto "cueVoice" {
+        \lyricmode {
+          \set fontSize = #-2
+          Dell' in -- vi -- to tra -- scor -- sa-e già l'o -- ra...
+          voi tar -- das -- te.
         }
       }
     >>
-  >>
-  \layout {
-    %#(layout-set-staff-size 12)
-    \context {
-      \Staff
-      \RemoveAllEmptyStaves
-    }
   }
+  \layout {
+    indent = 0
+  }
+
 }

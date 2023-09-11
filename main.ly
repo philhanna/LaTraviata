@@ -26,7 +26,7 @@
      (minimum-distance . 10)
      (padding . 1)
      (stretchability . 10))
-  system-separator-markup = \slashSeparator
+  %system-separator-markup = \slashSeparator
   print-page-number = ##f
 }
 
