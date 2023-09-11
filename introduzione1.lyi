@@ -17,8 +17,10 @@
     \time 4/4
     <<
       \new Voice = "bassVoice" {
+        \globals
         <<
           \relative c' {
+            s1*4/4			|
             s1*4/4 * 3			|
             s4 r8 b b4 b8 b8		|
             cis8 b r4 b8 r e r		|
@@ -28,6 +30,10 @@
           \new CueVoice = "cueVoice" \relative c' {
             \cueClef "treble_8"
             \tempo "Allegro" 4=140
+            \once \override Score.RehearsalMark.X-offset = #14
+            \once \override Score.RehearsalMark.Y-offset = #10
+            \mark 2
+            R1*4/4			|
             r2
             b8 ^\markup \italic \large "tenors" r e r	|
             dis8 r cis8. cis16 b8 r a8. a16	|
@@ -39,7 +45,7 @@
       }
       \new Lyrics \lyricsto "bassVoice" {
         \lyricmode {
-          \set fontSize = #-1
+          \set fontSize = #0
           Gio cam -- mo da Flo -- ra,
           e gio -- can -- do quel -- l'o -- re vo -- lar.
         }

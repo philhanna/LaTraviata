@@ -20,20 +20,24 @@
   right-margin = 1\cm
   ragged-bottom = ##t
   ragged-last-bottom = ##t
-  system-system-spacing.basic-distance = #17
+  system-system-spacing.basic-distance = #14
   score-system-spacing =
   #'((basic-distance . 10)
      (minimum-distance . 10)
      (padding . 1)
      (stretchability . 10))
   %system-separator-markup = \slashSeparator
-  print-page-number = ##f
+  print-page-number = ##t  
+  
 }
 
 globals = {
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #2
   \override Score.MetronomeMark.padding = #3
+  \set Score.markFormatter = #format-mark-box-numbers
+  \override Score.RehearsalMark.font-size = #3 
+  \override Beam.breakable = ##t
 }
 
 morebars = {
@@ -55,5 +59,6 @@ morebars = {
   }
 }
 
-\include "introduzione.lyi"
+\include "introduzione1.lyi"
 \include "introduzione2.lyi"
+\include "introduzione3.lyi"
