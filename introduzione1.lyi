@@ -27,7 +27,9 @@
           }
           \new CueVoice = "cueVoice" \relative c' {
             \cueClef "treble_8"
-            r2 b8 ^\markup \italic \large "tenors" r e r	|
+            \tempo "Allegro" 4=140
+            r2
+            b8 ^\markup \italic \large "tenors" r e r	|
             dis8 r cis8. cis16 b8 r a8. a16	|
             gis8 e r4 r gis8 a		|
             \break
@@ -54,5 +56,4 @@
   \layout {
     indent = 0
   }
-
 }

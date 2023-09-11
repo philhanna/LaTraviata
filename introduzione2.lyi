@@ -1,0 +1,61 @@
+\markup {
+  \fill-line {
+    \center-column {
+      \vspace #2
+      \line {
+        \large \bold { Sì, la vita s'addoppia al gioir }
+      }
+      \vspace #1
+      \line { }
+    }
+  }
+}
+
+\score {
+  \new Staff = bassStaff {
+    \clef bass
+    \key a \major
+    \time 4/4
+    <<
+      \new Voice = "bassVoice" \relative c' {
+        <<
+          {
+            s1*4/4*5
+            s2 gis4-> r8. gis16		|
+            fis4 d8. d16 b4 e8-. e-.	|
+          }
+          \new CueVoice = "cueVoice" \relative c'' {
+            \cueClef treble
+            r2 r4 e ^\markup \italic \large "Violetta"			|
+            cis4 a r e8-. e-.		|
+            e4 e8-. e-. e4 cis'8-. b-.	|
+            a8 r cis-. fis-. e4 a->	|
+            gis8-. e-. fis4-> e8-. cis-. \acciaccatura { e8 } d-. b-. |
+            \break a4 r \cueClefUnset s2	|
+          }
+        >>
+        a,4 r gis'-> r8. gis16		|
+        \break fis4 d8. d16 b4 e8-. e-.		|
+        a,4 r r2				|
+      }
+      \new Lyrics \lyricsto "bassVoice" {
+        \lyricmode {
+          \set fontSize = #-1
+          Sì, la vi -- ta s'ad -- dop -- pia__al gio -- ir.
+          Sì, la vi -- ta s'ad -- dop -- pia__al gio -- ir.
+        }
+      }
+      \new Lyrics \lyricsto "cueVoice" {
+        \lyricmode {
+          \set fontSize = #-2
+          Lo vo -- glio;
+          al pia -- ce -- re m'affido, _ ed io so -- gli -- o
+          con tal far -- ma -- co i ma -- li so --pir.
+        }
+      }
+    >>
+  }
+  \layout {
+    indent = 0
+  }
+}
