@@ -25,7 +25,7 @@
             s4 r8 b b4 b8 b8		|
             cis8 b r4 b8 r e r		|
             dis8 r cis8. cis16 b8 r a8. a16 |
-            gis4 r r2			|
+            gis4 r r2			\bar "|."
           }
           \new CueVoice = "cueVoice" \relative c' {
             \cueClef "treble_8"

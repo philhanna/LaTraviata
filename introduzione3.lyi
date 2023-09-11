@@ -5,13 +5,6 @@
       \line {
         \fontsize #2 \bold { Ben diceste - le cure segrete }
       }
-      \vspace #1
-
-      \line {They take their places at the table.  Violetta is seated between Alfredo}
-      \line {and Gastone.  Facing her, Flora takes her place between the Marquis and}
-      \line {the Baron. The remaining guests take their various places around the}
-      \line {table.  A moment of silence as the food is served.  Violetta and Gastone}
-      \line {are whispering to each other. }
 
       \vspace #1
       \line { }
@@ -37,9 +30,7 @@
             e4 fis8.-> fis16 d!4 e8 e8	|
             \mark 4
             a,4 r r2			|
-            R1*4/4*15			|
-            \mark 5
-            a'4 r a4. a8			|
+            \bar "|."
           }
           \new CueVoice = "cueVoice" \relative c'' {
             \cueClef treble
@@ -59,6 +50,7 @@
           \set fontSize = #0
           Ben di -- ce -- ste le cu -- re se -- gre -- te
           fu -- ga sem -- pre l'a -- mi -- co li -- cor.
+          È al con -- vi -- to che s'a -- pre ogni cor.
         }
       }
       \new Lyrics \lyricsto "cueVoice" {

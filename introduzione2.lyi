@@ -36,8 +36,8 @@
           }
         >>
         a,4 r gis'-> r8. gis16		|
-        \break fis4 d8. d16 b4 e8-. e-.		|
-        a,4 r r2				|
+        \break fis4 d8. d16 b4 e8-. e-.	|
+        a,4 r r2				\bar "|."
       }
       \new Lyrics \lyricsto "bassVoice" {
         \lyricmode {
@@ -51,7 +51,7 @@
           \set fontSize = #-2
           Lo vo -- glio;
           al pia -- ce -- re m'affido, _ ed io so -- gli -- o
-          con tal far -- ma -- co i ma -- li so --pir.
+          con tal far -- ma -- co i ma -- li so -- pir.
         }
       }
     >>
