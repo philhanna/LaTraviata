@@ -1,3 +1,5 @@
 *.swp
 *.mid
 *.ogg
+*.pdf
+!original.pdf
