@@ -27,7 +27,7 @@
           }
           \new CueVoice = "cueVoice" \relative c' {
             \cueClef "treble_8"
-            r2 b8 ^\markup \italic \large "tenors" r e r			|
+            r2 b8 ^\markup \italic \large "tenors" r e r	|
             dis8 r cis8. cis16 b8 r a8. a16	|
             gis8 e r4 r gis8 a		|
             \break
@@ -37,6 +37,7 @@
       }
       \new Lyrics \lyricsto "bassVoice" {
         \lyricmode {
+          \set fontSize = #-1
           Gio cam -- mo da Flo -- ra,
           e gio -- can -- do quel -- l'o -- re vo -- lar.
         }
