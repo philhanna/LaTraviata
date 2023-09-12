@@ -3,9 +3,12 @@
     \center-column {
       \vspace #2
       \line {
-        \fontsize #2  \bold { Sì, la vita s'addoppia al gioir }
+        \fontsize #2  \bold { Sì, la vita s'addoppia al gioir (p. 7)}
       }
-      \vspace #1
+      \line {
+        \fontsize #1 \italic { Indeed, life is doubly heightened by pleasure } 
+      }
+      \vspace #0.5
       \line { }
     }
   }

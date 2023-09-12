@@ -2,10 +2,11 @@
   \fill-line {
     \center-column {
       \line {
-        \large \bold {Introduzione}
+        \fontsize #2 \bold {Giocammo da Flora (p. 5)}
       }
-      \vspace #1
-      \line { }
+      \line {
+        \fontsize #1 \italic {We were playing cards at Flora's}
+      }
     }
   }
 }

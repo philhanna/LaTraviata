@@ -1,11 +1,16 @@
 \markup {
   \fill-line {
     \center-column {
+      \vspace #1
+      \line {The Viscount Gastone de Letorières enters with Alfredo Germont.}
+      \line {Servants are busily engaged at the table.}
       \vspace #2
       \line {
-        \fontsize #2 \bold { Ben diceste - le cure segrete }
+        \fontsize #2 \bold { Ben diceste - le cure segrete (p. 11)}
       }
-
+      \line {
+        \italic \fontsize #1 {Well spoken - secret cares fly before that great friend, wine.}
+      }
       \vspace #1
       \line { }
     }
