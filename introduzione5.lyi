@@ -1,26 +1,11 @@
 \markup {
   \fill-line {
     \center-column {
-      \line {They take their places at the table.  Violetta is seated between Alfredo}
-      \line {and Gastone.  Facing her, Flora takes her place between the Marquis and}
-      \line {the Baron. The remaining guests take their various places around the}
-      \line {table.  A moment of silence as the food is served.  Violetta and Gastone}
-      \line {are whispering to each other. }
-      \vspace #2
-      \line {
-        \fontsize #2 \bold { È al convito che s'apre ogni cor (p. 12)}
-      }
-      \line {
-        \fontsize #1 \italic { It is at the banquet that every heart opens }
-      }
+      \line \fontsize #2 \bold { Beviamo (p. 16) }
+      \line \fontsize #1 \italic { Let us drink ... Yes, yes, a toast. }      
     }
   }
 }
-
-\paper {
-  ragged-right = ##f
-}
-
 \score {
   \new Staff = bassStaff {
     \clef bass
@@ -31,26 +16,42 @@
         \globals
         <<
           {
-            \mark 5
-            \break
-            a'4 r a4. a8			|
-            a2 a4 r8 a8			|
-            e2. e8. e16			|
-            a,4 r r2			\bar "|."
+            s2 s4 s8. \mark 6 s16	| %1
+            s2 s4 s8. f!16		| %2
+            f2 f4 r8. f16		| %3
+            f2 f4. f8			| %4
+            d2 r2			| %5
+            R1*4				| %6-9
+            r4 r8. d'16 d4 r8. d16 \(	| %10
+            d4.. d,16 d4 \) r4		| %11
+            R1*7				| %12-18
+            s1				| %19
+            s2 s4 d'8. d16		| %20
+            d2  d4. d8			| %21
+            d1 \ff ~			| %22
+            d1
           }
           \new CueVoice = "cueVoice" \relative c'' {
+            \cueClef treble
+            r2 r4 r8. f16		|
+            f2 f4 \cueClefUnset r4	|
+            s1 * 2
           }
+          
         >>
       }
       \new Lyrics \lyricsto "bassVoice" {
         \lyricmode {
           \set fontSize = #0
-          È al con -- vi -- to che s'a -- pre ogni cor.
+          Be -- via -- mo, be -- via -- mo, be -- viam.
+          Sì, sì, un brin -- di -- si.
+          Sì, at -- ten -- ti-al can -- tor.
         }
       }
       \new Lyrics \lyricsto "cueVoice" {
         \lyricmode {
           \set fontSize = #-2
+          Be -- via -- mo.
         }
       }
     >>

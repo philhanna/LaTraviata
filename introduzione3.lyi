@@ -35,6 +35,7 @@
             e4 fis8.-> fis16 d!4 e8 e8	|
             \mark 4
             a,4 r r2			|
+            R1*15			|
             \bar "|."
           }
           \new CueVoice = "cueVoice" \relative c'' {

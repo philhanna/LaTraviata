@@ -20,7 +20,7 @@
   right-margin = 1\cm
   ragged-bottom = ##t
   ragged-last-bottom = ##t
-  system-system-spacing.basic-distance = #14
+  system-system-spacing.basic-distance = #16
   score-system-spacing =
   #'((basic-distance . 10)
      (minimum-distance . 10)
