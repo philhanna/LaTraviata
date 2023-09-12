@@ -28,7 +28,7 @@
         {
           \mark 5
           \break
-          a'4 ^\markup \larger Tutti r a4. a8			|
+          a'4 ^\markup \italic \large Tutti r a4. a8			|
           a2 a4 r8 a8			|
           e2. e8. e16			|
           a,4 r r2			\bar "|."

@@ -2,7 +2,9 @@
   \fill-line {
     \center-column {
       \line \fontsize #2 \bold { Beviamo (p. 16) }
-      \line \fontsize #1 \italic { Let us drink ... Yes, yes, a toast. }      
+      \line \fontsize #1 \italic { Let us drink ... Yes, yes, a toast ... Yes, attend the singer.}  
+      \vspace #1
+      \line { }
     }
   }
 }
@@ -15,30 +17,39 @@
       \new Voice = "bassVoice" \relative c {
         \globals
         <<
-          {
-            s2 s4 s8. \mark 6 s16	| %1
-            s2 s4 s8. f!16		| %2
-            f2 f4 r8. f16		| %3
-            f2 f4. f8			| %4
-            d2 r2			| %5
-            R1*4				| %6-9
-            r4 r8. d'16 d4 r8. d16 \(	| %10
-            d4.. d,16 d4 \) r4		| %11
-            R1*7				| %12-18
-            s1				| %19
-            s2 s4 d'8. d16		| %20
-            d2  d4. d8			| %21
-            d1 \ff ~			| %22
-            d1
-          }
           \new CueVoice = "cueVoice" \relative c'' {
+            r2 r4
             \cueClef treble
-            r2 r4 r8. f16		|
-            f2 f4 \cueClefUnset r4	|
-            s1 * 2
+            r8. f16	| %1
+            f2 f4 \cueClefUnset s4		| %2
+            s1					| %3
+            s1					| %4
           }
-          
+          {
+            s1					| %1
+            s2 s4 r8. f!16 ^\markup \italic \large "Chorus" | %2
+            f!2 f4 r8. f16			| %3
+            f!2 f4. f8				| %4
+          }          
         >>
+        <<
+          \new CueVoice = "cueVoiceTwo" \relative c' {
+            s2 \cueClef "treble_8" r4 d8. ^\markup \italic \large "Gastone" d16					| %5
+            d4 bes8 g! d'4 bes8 g8		| %6
+            d'4 d r4 d8. d16			| %7
+            d4 bes8 g! d'4 bes8 g8		| %8
+            \break d'4 d r4 \fermata d8. d16	| %9
+            d4 \cueClefUnset s4 s2		| %10
+          }
+          {
+            \break d2 s2				| %5
+            s1*4					| %6-9
+            s4 r8. d'16 ^\markup \italic \large "Tutti" d4 r8. d16 \(	| %10
+            d4.. d,16 d4 \) r4			| %11
+            
+          }
+        >>
+
       }
       \new Lyrics \lyricsto "bassVoice" {
         \lyricmode {
@@ -52,6 +63,14 @@
         \lyricmode {
           \set fontSize = #-2
           Be -- via -- mo.
+        }
+      }
+      \new Lyrics \lyricsto "cueVoiceTwo" {
+        \lyricmode {
+          \set fontSize = #-2
+          O ba -- ro -- ne, né-un ver -- so, né-un vi -- va
+          tro-- ve -- re-te in quest' o -- ra giu -- li -- va?
+          Dun-que a te...
         }
       }
     >>
