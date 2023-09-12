@@ -5,7 +5,7 @@
         \fontsize #2 \bold {Giocammo da Flora (p. 5)}
       }
       \line {
-        \fontsize #1 \italic {We were playing cards at Flora's}
+        \fontsize #1 \italic {We played at Flora's, and those hours of playing flew by}
       }
     }
   }

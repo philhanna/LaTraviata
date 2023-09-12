@@ -6,7 +6,7 @@
         \fontsize #2  \bold { Sì, la vita s'addoppia al gioir (p. 7)}
       }
       \line {
-        \fontsize #1 \italic { Indeed, life is doubly heightened by pleasure } 
+        \fontsize #1 \italic { Yes, life doubles with joy } 
       }
       \vspace #0.5
       \line { }

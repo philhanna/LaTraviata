@@ -9,7 +9,7 @@
         \fontsize #2 \bold { Ben diceste - le cure segrete (p. 11)}
       }
       \line {
-        \italic \fontsize #1 {Well spoken - secret cares fly before that great friend, wine.}
+        \italic \fontsize #1 {Well spoken - secret cares fly before that friend, wine.}
       }
       \vspace #1
       \line { }
