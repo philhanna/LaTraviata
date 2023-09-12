@@ -1,0 +1,106 @@
+\markup {
+  \fill-line {
+    \center-column {
+      \line {They take their places at the table.  Violetta is seated between Alfredo}
+      \line {and Gastone.  Facing her, Flora takes her place between the Marquis and}
+      \line {the Baron. The remaining guests take their various places around the}
+      \line {table.  A moment of silence as the food is served.  Violetta and Gastone}
+      \line {are whispering to each other. }
+      \vspace #2
+      \line \fontsize #2 \bold { È al convito che s'apre ogni cor (p. 12)}
+      \line \fontsize #1 \italic { It is at the banquet that every heart opens }    
+    }
+  }
+}
+
+\paper {
+  ragged-right = ##f
+}
+
+\score {
+  \new Staff = bassStaff {
+    \clef bass
+    \key a \major
+    \time 4/4
+    <<
+      \new Voice = "bassVoice" \relative c {
+        \globals
+        <<
+          {
+            \mark 5
+            \break
+            a'4 r a4. a8			|
+            a2 a4 r8 a8			|
+            e2. e8. e16			|
+            a,4 r r2			\bar "|."
+          }
+          \new CueVoice = "cueVoice" \relative c'' {
+          }
+        >>
+      }
+      \new Lyrics \lyricsto "bassVoice" {
+        \lyricmode {
+          \set fontSize = #0
+          È al con -- vi -- to che s'a -- pre ogni cor.
+        }
+      }
+    >>
+  }
+  \layout {
+    indent = 0
+  }
+}
+
+\markup {
+  \fill-line {
+    \center-column {
+      \line \fontsize #2 \bold { Beviamo (p. 16) }
+      \line \fontsize #1 \italic { Let us drink }      
+    }
+  }
+}
+\score {
+  \new Staff = bassStaff {
+    \clef bass
+    \key a \major
+    \time 4/4
+    <<
+      \new Voice = "bassVoice" \relative c {
+        \globals
+        <<
+          {
+            s2 s4 s8. \mark 6 s16	|
+            s2 s4 s8. f!16		|
+            f2 f4 r8. f16		|
+            f2 f4. f8			|
+            d2 r2
+            R1*4
+            
+          }
+          \new CueVoice = "cueVoice" \relative c'' {
+            \cueClef treble
+            r2 r4 r8. f16		|
+            f2 f4 \cueClefUnset r4	|
+            s1 * 2
+          }
+          
+        >>
+      }
+      \new Lyrics \lyricsto "bassVoice" {
+        \lyricmode {
+          \set fontSize = #0
+          Be -- via -- mo, be -- via -- mo, be -- viam.
+        }
+      }
+      \new Lyrics \lyricsto "cueVoice" {
+        \lyricmode {
+          \set fontSize = #-2
+          Be -- via -- mo.
+        }
+      }
+    >>
+  }
+  \layout {
+    indent = 0
+  }
+}
