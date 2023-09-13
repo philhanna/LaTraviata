@@ -16,61 +16,51 @@
     <<
       \new Voice = "bassVoice" \relative c {
         \globals
-        <<
-          \new CueVoice = "cueVoice" \relative c'' {
-            r2 r4
-            \cueClef treble
-            r8. f16	| %1
-            f2 f4 \cueClefUnset s4		| %2
-            s1					| %3
-            s1					| %4
-          }
-          {
-            s1					| %1
-            s2 s4 r8. f!16 ^\markup \italic \large "Chorus" | %2
-            f!2 f4 r8. f16			| %3
-            f!2 f4. f8				| %4
-          }          
-        >>
-        <<
-          \new CueVoice = "cueVoiceTwo" \relative c' {
-            s2 \cueClef "treble_8" r4 d8. ^\markup \italic \large "Gastone" d16					| %5
-            d4 bes8 g! d'4 bes8 g8		| %6
-            d'4 d r4 d8. d16			| %7
-            d4 bes8 g! d'4 bes8 g8		| %8
-            \break d'4 d r4 \fermata d8. d16	| %9
-            d4 \cueClefUnset s4 s2		| %10
-          }
-          {
-            \break d2 s2				| %5
-            s1*4					| %6-9
-            s4 r8. d'16 ^\markup \italic \large "Tutti" d4 r8. d16 \(	| %10
-            d4.. d,16 d4 \) r4			| %11
-            
-          }
-        >>
-
+        {
+          s1					| %1
+          s2 s4 r8. f!16
+          ^\markup \italic \large "Chorus"	| %2
+          f!2 f4 r8. f16				| %3
+          f!2 f4. f8				| %4
+          d2 r2 \break				| %5
+          s1					| %6
+          s4 r8. d'16 ^\markup \italic \large "Chorus"
+          d4 r8. d16	\(			| %7
+          d4.. d,16 d4 \) r4			| %8
+          s1*2					| %9-10
+          s2 s4 d'8. d16				| %11
+          d2 d4. d8				| %12
+          d1 \ff ~				| %13
+          d1					| %14
+          \bar "|."
+        }          
       }
       \new Lyrics \lyricsto "bassVoice" {
         \lyricmode {
           \set fontSize = #0
           Be -- via -- mo, be -- via -- mo, be -- viam.
           Sì, sì, un brin -- di -- si.
-          Sì, at -- ten -- ti-al can -- tor.
+          Sì, at -- ten -- ti-al can -- tor
         }
       }
-      \new Lyrics \lyricsto "cueVoice" {
+      \new CueVoice = "cueVoiceOne" \relative c' {
+        \cueClef treble
+        r2 r4 r8. <f a c>16			| %1
+        q2 q4 \cueClefUnset s4			| %2
+        s1*3					| %3-6
+        r2 \cueClef "treble_8" r4 \fermata d8. d16| %7
+        d4 \cueClefUnset s2.			| %8
+        s1 * 2					| %9-10
+        r2 r4 d8. d16				| %11
+        d2 d,4 s4				| %12
+        
+      }
+      \new Lyrics \lyricsto "cueVoiceOne" {
         \lyricmode {
           \set fontSize = #-2
           Be -- via -- mo.
-        }
-      }
-      \new Lyrics \lyricsto "cueVoiceTwo" {
-        \lyricmode {
-          \set fontSize = #-2
-          O ba -- ro -- ne, né-un ver -- so, né-un vi -- va
-          tro-- ve -- re-te in quest' o -- ra giu -- li -- va?
-          Dun-que a te...
+          Dun -- que~a te...
+          Dun -- que~at -- ten -- ti
         }
       }
     >>
